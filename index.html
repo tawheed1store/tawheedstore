@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="tawheed store shop cleaning ahmed tawheed tawheedstore" />
-    <title>متجرنا - تسوق الآن</title>
-    <!-- Tailwind CSS CDN -->
+    <meta name="description" content="اكتشف مجموعة واسعة من المنتجات عالية الجودة، من المنظفات إلى الخضروات الطازجة، كل ما تحتاجه في مكان واحد." />
+    <meta name="keywords" content="tawheed, store, shop, cleaning, ahmed, tawheed, tawheedstore" />
+    <meta name="SEO" content="tawheed store shop cleaning ahmed tawheed tawheedstore" />
+    <title>Tawheed Store</title>    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts - Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="./logo.png" />
+        <link rel="icon" href="./logo.png" />
     <style>
         body {
             font-family: 'Cairo', sans-serif;
@@ -64,6 +65,81 @@
             max-height: 80vh; /* Limit height to prevent overflow */
             overflow-y: auto; /* Enable scrolling for cart content */
         }
+
+        /* Keyframes for custom message animations */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-out-down {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.5s ease-out forwards;
+        }
+
+        .animate-fade-out-down {
+            animation: fade-out-down 0.5s ease-in forwards;
+        }
+
+        /* Styling for AI Assistant Modal */
+        .ai-modal {
+            max-height: 80vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .ai-chat-history {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: #f0f4f8;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .ai-message {
+            margin-bottom: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            max-width: 80%;
+        }
+        .ai-message.user {
+            background-color: #dbeafe;
+            align-self: flex-end;
+            margin-right: auto;
+        }
+        .ai-message.bot {
+            background-color: #e0f2f7;
+            align-self: flex-start;
+            margin-left: auto;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #3b82f6;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="relative">
@@ -77,6 +153,7 @@
                 <a href="#products" class="text-white text-lg hover:text-blue-200 transition duration-300">منتجاتنا</a>
                 <a href="#payment" class="text-white text-lg hover:text-blue-200 transition duration-300">طرق الدفع</a>
                 <a href="#orders" class="text-white text-lg hover:text-blue-200 transition duration-300">الطلبات</a>
+                <a href="#delivery-locations" class="text-white text-lg hover:text-blue-200 transition duration-300">مناطق التوصيل</a>
                 <a href="#about" class="text-white text-lg hover:text-blue-200 transition duration-300">عنا</a>
                 <a href="#why-us" class="text-white text-lg hover:text-blue-200 transition duration-300">لماذا نحن</a>
             </div>
@@ -94,6 +171,7 @@
             <a href="#products" class="text-white text-3xl hover:text-blue-200 transition duration-300" onclick="hideMobileMenu()">منتجاتنا</a>
             <a href="#payment" class="text-white text-3xl hover:text-blue-200 transition duration-300" onclick="hideMobileMenu()">طرق الدفع</a>
             <a href="#orders" class="text-white text-3xl hover:text-blue-200 transition duration-300" onclick="hideMobileMenu()">الطلبات</a>
+            <a href="#delivery-locations" class="text-white text-3xl hover:text-blue-200 transition duration-300" onclick="hideMobileMenu()">مناطق التوصيل</a>
             <a href="#about" class="text-white text-3xl hover:text-blue-200 transition duration-300" onclick="hideMobileMenu()">عنا</a>
             <a href="#why-us" class="text-white text-3xl hover:text-blue-200 transition duration-300" onclick="hideMobileMenu()">لماذا نحن</a>
         </div>
@@ -176,26 +254,40 @@
                     <p class="text-gray-600 text-center text-lg mt-4">
                         يرجى نسخ الطلب أعلاه ثم اضغط على زر "إرسال الطلب" لإتمام العملية.
                     </p>
-                    <a href="https://forms.gle/Zv61MkJV1YRHxSBi7">
+
+
+                        <a href="https://forms.gle/Zv61MkJV1YRHxSBi7">
                         <button id="send-order-button" class="bg-blue-600 text-white px-8 py-4 rounded-full text-xl font-bold shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">
                             <i class="fas fa-paper-plane ml-2"></i> إرسال الطلب
                         </button>
                     </a>
+
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Download App Section -->
-    <section id="download-app" class="py-16 bg-purple-700 text-white p-6 fade-in-section">
+    <!-- Delivery Locations Section -->
+    <section id="delivery-locations" class="py-16 bg-purple-700 text-white p-6 fade-in-section">
         <div class="container mx-auto text-center">
-            <h2 class="text-5xl font-extrabold mb-8">نزل تطبيقنا الآن!</h2>
+            <h2 class="text-5xl font-extrabold mb-8">مناطق التوصيل المتاحة 📍</h2>
             <p class="text-xl mb-10 opacity-90 max-w-2xl mx-auto">
-                استمتع بتجربة تسوق أسهل وأسرع مع تطبيق متجرنا المتوفر على جميع المنصات. حمل التطبيق اليوم!
+                يسعدنا أن نقدم خدمة التوصيل (الدليفري) إلى المناطق التالية:
             </p>
-            <button class="bg-white text-purple-700 hover:bg-purple-100 px-8 py-4 rounded-full text-xl font-bold shadow-lg transition duration-300 transform hover:scale-105">
-                <i class="fas fa-mobile-alt ml-2"></i> حمل التطبيق
-            </button>
+            <ul class="text-2xl font-bold space-y-4 max-w-md mx-auto">
+                <li class="bg-purple-600 p-4 rounded-lg shadow-md transform hover:scale-105 transition duration-300 flex flex-col items-center">
+                    <i class="fas fa-map-marker-alt text-4xl mb-2"></i> <span>كفر سنجاب</span>
+                </li>
+                <li class="bg-purple-600 p-4 rounded-lg shadow-md transform hover:scale-105 transition duration-300 flex flex-col items-center">
+                    <i class="fas fa-map-marker-alt text-4xl mb-2"></i> <span>صدقا</span>
+                </li>
+                <li class="bg-purple-600 p-4 rounded-lg shadow-md transform hover:scale-105 transition duration-300 flex flex-col items-center">
+                    <i class="fas fa-map-marker-alt text-4xl mb-2"></i> <span>الشرفا</span>
+                </li>
+                <li class="bg-purple-600 p-4 rounded-lg shadow-md transform hover:scale-105 transition duration-300 flex flex-col items-center">
+                    <i class="fas fa-map-marker-alt text-4xl mb-2"></i> <span>البسيوني</span>
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -260,13 +352,14 @@
                     <li><a href="#products" class="text-gray-400 hover:text-white transition duration-300">منتجاتنا</a></li>
                     <li><a href="#payment" class="text-gray-400 hover:text-white transition duration-300">طرق الدفع</a></li>
                     <li><a href="#orders" class="text-gray-400 hover:text-white transition duration-300">الطلبات</a></li>
+                    <li><a href="#delivery-locations" class="text-gray-400 hover:text-white transition duration-300">مناطق التوصيل</a></li>
                     <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">عنا</a></li>
                 </ul>
             </div>
             <!-- Contact Info -->
             <div>
                 <h3 class="text-2xl font-bold mb-6 text-blue-400">تواصل معنا</h3>
-                <p class="text-gray-400">
+                        <p class="text-gray-400">
                     <i class="fas fa-map-marker-alt ml-2"></i> 123
                 </p>
                 <p class="text-gray-400 mt-2">
@@ -300,6 +393,11 @@
         </a>
     </div>
 
+    <!-- Floating AI Assistant Icon -->
+    <div id="ai-assistant-icon" class="fixed bottom-8 left-24 bg-purple-600 text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-purple-700 transition duration-300 z-40">
+        <i class="fas fa-robot text-3xl"></i>
+    </div>
+
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg mx-4 cart-modal">
@@ -325,6 +423,29 @@
         </div>
     </div>
 
+    <!-- AI Assistant Modal -->
+    <div id="ai-assistant-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg mx-4 ai-modal">
+            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                <h3 class="text-3xl font-bold text-purple-800">مساعد التسوق بالذكاء الاصطناعي </h3>
+                <button id="close-ai-assistant-modal" class="text-gray-500 hover:text-gray-700 text-3xl focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="ai-chat-history" class="ai-chat-history flex flex-col mb-4 min-h-[200px] max-h-[400px]">
+                <!-- Chat messages will be displayed here -->
+            </div>
+            <div class="flex items-center">
+                <input type="text" id="ai-input" placeholder="كيف يمكنني مساعدتك اليوم؟" class="flex-grow p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-purple-500 focus:border-purple-500 text-lg text-right">
+                <button id="ai-send-button" class="bg-purple-600 text-white px-6 py-3 rounded-full text-lg font-bold hover:bg-purple-700 transition duration-300 ml-3">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div id="ai-loading-spinner" class="hidden mt-4 flex justify-center">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Product data
@@ -392,6 +513,16 @@
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+
+        // AI Assistant elements
+        const aiAssistantIcon = document.getElementById('ai-assistant-icon');
+        const aiAssistantModal = document.getElementById('ai-assistant-modal');
+        const closeAiAssistantModalButton = document.getElementById('close-ai-assistant-modal');
+        const aiChatHistory = document.getElementById('ai-chat-history');
+        const aiInput = document.getElementById('ai-input');
+        const aiSendButton = document.getElementById('ai-send-button');
+        const aiLoadingSpinner = document.getElementById('ai-loading-spinner');
+
 
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -625,7 +756,7 @@
             setTimeout(() => {
                 messageBox.classList.add('animate-fade-out-down');
                 messageBox.addEventListener('animationend', () => messageBox.remove());
-            }, 3000); // Message disappears after 3 seconds
+            }, 1500); // Message disappears after 3 seconds
         }
 
         // Intersection Observer for scroll animations
@@ -664,9 +795,92 @@
             document.body.style.overflow = ''; // Restore scrolling
         }
 
+        // --- AI Assistant Functions ---
+
+        // Show AI Assistant modal
+        function showAIAssistantModal() {
+            aiAssistantModal.classList.remove('hidden');
+            aiInput.focus(); // Focus on input when modal opens
+            // Optionally add a welcome message from the AI
+            if (aiChatHistory.children.length === 0) {
+                addMessageToChat('مرحباً! أنا مساعدك الشخصي للتسوق. كيف يمكنني مساعدتك اليوم؟', 'bot');
+            }
+        }
+
+        // Hide AI Assistant modal
+        function hideAIAssistantModal() {
+            aiAssistantModal.classList.add('hidden');
+        }
+
+        // Add message to AI chat history
+        function addMessageToChat(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `ai-message ${sender} text-gray-800`;
+            messageDiv.textContent = message;
+            aiChatHistory.appendChild(messageDiv);
+            aiChatHistory.scrollTop = aiChatHistory.scrollHeight; // Scroll to bottom
+        }
+
+        // Send query to Gemini API
+        async function sendQueryToAI() {
+            const userQuery = aiInput.value.trim();
+            if (userQuery === '') return;
+
+            addMessageToChat(userQuery, 'user');
+            aiInput.value = ''; // Clear input field
+            aiLoadingSpinner.classList.remove('hidden'); // Show loading spinner
+
+            const productCategories = products.map(p => getCategoryDisplayName(p.category)).filter((value, index, self) => self.indexOf(value) === index).join(', ');
+            const productNames = products.map(p => p.name).join(', ');
+
+            const prompt = `أنت مساعد تسوق لمتجر إلكتروني. المتجر يبيع المنتجات التالية: ${productNames}. الفئات المتوفرة هي: ${productCategories}.
+            مهمتك هي مساعدة المستخدمين في العثور على المنتجات، وتقديم معلومات عنها، وتقديم توصيات بناءً على المنتجات المتاحة في المتجر.
+            إذا سأل المستخدم عن منتج غير موجود، أخبره بذلك.
+            سؤال المستخدم: ${userQuery}`;
+
+            let chatHistory = [];
+            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+            try {
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // If you want to use models other than gemini-2.0-flash or imagen-3.0-generate-002, provide an API key here. Otherwise, leave this as-is.
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    addMessageToChat(text, 'bot');
+                } else {
+                    addMessageToChat('عذرًا، لم أتمكن من فهم طلبك. يرجى المحاولة مرة أخرى.', 'bot');
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                addMessageToChat('حدث خطأ أثناء معالجة طلبك. يرجى المحاولة لاحقاً.', 'bot');
+            } finally {
+                aiLoadingSpinner.classList.add('hidden'); // Hide loading spinner
+            }
+        }
+
         // Event Listeners
         cartIcon.addEventListener('click', showCartModal);
         closeCartModalButton.addEventListener('click', hideCartModal);
+        aiAssistantIcon.addEventListener('click', showAIAssistantModal);
+        closeAiAssistantModalButton.addEventListener('click', hideAIAssistantModal);
+        aiSendButton.addEventListener('click', sendQueryToAI);
+        aiInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendQueryToAI();
+            }
+        });
 
         // Initial render and UI updates on page load
         document.addEventListener('DOMContentLoaded', () => {
